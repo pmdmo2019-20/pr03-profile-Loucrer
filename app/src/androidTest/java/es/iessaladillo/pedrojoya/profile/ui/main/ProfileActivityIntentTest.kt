@@ -36,7 +36,7 @@ class ProfileActivityIntentTest {
 
     @Before
     fun setup() {
-        onView(withId(R.id.txtName)).perform(closeSoftKeyboard())
+        onView(withId(R.id.txtEmail)).perform(closeSoftKeyboard())
     }
 
     // Implicit intents
@@ -116,7 +116,7 @@ class ProfileActivityIntentTest {
         // Check result set to views.
         onView(withId(R.id.imgAvatar))
             .check(matches(DrawableMatcher(avatar.imageResId)))
-        onView(withId(R.id.lblAvatar)).check(
+        onView(withId(R.id.lblAvatar1)).check(
             matches(withText(avatar.name))
         )
     }

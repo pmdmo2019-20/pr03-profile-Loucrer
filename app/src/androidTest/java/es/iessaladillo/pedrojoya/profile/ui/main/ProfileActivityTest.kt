@@ -26,14 +26,14 @@ class ProfileActivityTest {
 
     @Before
     fun setup() {
-        onView(withId(R.id.txtName)).perform(closeSoftKeyboard())
+        onView(withId(R.id.txtEmail)).perform(closeSoftKeyboard())
     }
 
     // Initial state.
 
     @Test
     fun shouldNameHasFocusInitially() {
-        onView(withId(R.id.txtName)).check(matches(hasFocus()))
+        onView(withId(R.id.txtEmail)).check(matches(hasFocus()))
     }
 
     @Test
@@ -41,16 +41,16 @@ class ProfileActivityTest {
         val avatar = Database.queryDefaultAvatar()
         onView(withId(R.id.imgAvatar))
             .check(matches(DrawableMatcher(avatar.imageResId)))
-        onView(withId(R.id.lblAvatar)).check(matches(withText(avatar.name)))
+        onView(withId(R.id.lblAvatar1)).check(matches(withText(avatar.name)))
     }
 
     // EditText should show error when content is invalid.
 
     @Test
     fun shouldNameEditTextShowErrorWhenInvalidData() {
-        onView(withId(R.id.txtName)).perform(click(), closeSoftKeyboard(), replaceText(""))
+        onView(withId(R.id.txtEmail)).perform(click(), closeSoftKeyboard(), replaceText(""))
         onView(withId(R.id.mnuSave)).perform(click())
-        onView(withId(R.id.txtName)).check(
+        onView(withId(R.id.txtEmail)).check(
             matches(
                 hasErrorText(
                     testRule.activity.getString(R.string.profile_invalid_name)
@@ -61,7 +61,7 @@ class ProfileActivityTest {
 
     @Test
     fun shouldEmailEditTextShowErrorWhenInvalidData() {
-        onView(withId(R.id.txtName)).perform(click(), closeSoftKeyboard(), replaceText("test"))
+        onView(withId(R.id.txtEmail)).perform(click(), closeSoftKeyboard(), replaceText("test"))
         onView(withId(R.id.txtEmail)).perform(click(), closeSoftKeyboard(), replaceText("test"))
         onView(withId(R.id.mnuSave)).perform(click())
         onView(withId(R.id.txtEmail)).check(
@@ -75,7 +75,7 @@ class ProfileActivityTest {
 
     @Test
     fun shouldPhonenumberEditTextShowErrorWhenInvalidData() {
-        onView(withId(R.id.txtName)).perform(click(), closeSoftKeyboard(), replaceText("test"))
+        onView(withId(R.id.txtEmail)).perform(click(), closeSoftKeyboard(), replaceText("test"))
         onView(withId(R.id.txtEmail)).perform(click(), closeSoftKeyboard(), replaceText("test@test.com"))
         onView(withId(R.id.txtPhonenumber)).perform(click(), closeSoftKeyboard(), replaceText("1"))
         onView(withId(R.id.mnuSave)).perform(click())
@@ -90,7 +90,7 @@ class ProfileActivityTest {
 
     @Test
     fun shouldAddressEditTextShowErrorWhenInvalidData() {
-        onView(withId(R.id.txtName)).perform(click(), closeSoftKeyboard(), replaceText("test"))
+        onView(withId(R.id.txtEmail)).perform(click(), closeSoftKeyboard(), replaceText("test"))
         onView(withId(R.id.txtEmail)).perform(click(), closeSoftKeyboard(), replaceText("test@test.com"))
         onView(withId(R.id.txtPhonenumber)).perform(click(), closeSoftKeyboard(), replaceText("666666666"))
         onView(withId(R.id.txtAddress)).perform(click(), closeSoftKeyboard(), replaceText(""))
@@ -106,7 +106,7 @@ class ProfileActivityTest {
 
     @Test
     fun shouldWebEditTextShowErrorWhenInvalidData() {
-        onView(withId(R.id.txtName)).perform(click(), closeSoftKeyboard(), replaceText("test"))
+        onView(withId(R.id.txtEmail)).perform(click(), closeSoftKeyboard(), replaceText("test"))
         onView(withId(R.id.txtEmail)).perform(click(), closeSoftKeyboard(), replaceText("test@test.com"))
         onView(withId(R.id.txtPhonenumber)).perform(click(), closeSoftKeyboard(), replaceText("666666666"))
         onView(withId(R.id.txtAddress)).perform(click(), closeSoftKeyboard(), replaceText("test"))
@@ -125,8 +125,8 @@ class ProfileActivityTest {
 
     @Test
     fun shouldNameEditTextShowNoErrorWhenValidData() {
-        onView(withId(R.id.txtName)).perform(click(), closeSoftKeyboard(), replaceText("test"))
-        onView(withId(R.id.txtName)).check(matches(hasErrorText(isEmptyOrNullString())))
+        onView(withId(R.id.txtEmail)).perform(click(), closeSoftKeyboard(), replaceText("test"))
+        onView(withId(R.id.txtEmail)).check(matches(hasErrorText(isEmptyOrNullString())))
     }
 
     @Test
@@ -166,7 +166,7 @@ class ProfileActivityTest {
 
     @Test
     fun shouldNameEditTextGoForwardWhenImeOptionsClicked() {
-        onView(withId(R.id.txtName)).perform(
+        onView(withId(R.id.txtEmail)).perform(
             typeText("test"),
             pressImeActionButton()
         )

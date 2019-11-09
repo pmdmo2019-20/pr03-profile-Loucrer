@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndroidStudioProjects-pr03-profile-Loucrer-PR03-Profile.iml" filepath="$PROJECT_DIR$/AndroidStudioProjects-pr03-profile-Loucrer-PR03-Profile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/AndroidStudioProjects-pr03-profile-Loucrer-app.iml" filepath="$PROJECT_DIR$/app/AndroidStudioProjects-pr03-profile-Loucrer-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/PR03-Profile.iml" filepath="$PROJECT_DIR$/PR03-Profile.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/pr03-profile-Loucrer-PR03-Profile.iml" filepath="$PROJECT_DIR$/pr03-profile-Loucrer-PR03-Profile.iml" />
