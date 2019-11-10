@@ -1,82 +1,98 @@
 package es.iessaladillo.pedrojoya.profile.ui.main
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import es.iessaladillo.pedrojoya.profile.R
+import es.iessaladillo.pedrojoya.profile.ui.avatar.AvatarActivity
 import es.iessaladillo.pedrojoya.profile.utils.*
-import javax.naming.Context
-import javax.xml.datatype.DatatypeConstants.DURATION
+import kotlinx.android.synthetic.main.profile_activity.*
 
 //import kotlinx.android.synthetic.main.profile_avatar.*
 //import kotlinx.android.synthetic.main.profile_form.*
 
 class ProfileActivity : AppCompatActivity() {
 
-
-    private val DURATION_TOAST: Int = 2
-
-    //TOAST
-    private lateinit var message: Toast
-
-    //BOTTON
-    private lateinit var mnuSave: Button
-    //  EDIT_TEXT
-    private lateinit var txtName: EditText
-    private lateinit var txtEmail: EditText
-    private lateinit var txtPhone: EditText
-    private lateinit var txtAddress: EditText
-    private lateinit var txtWeb: EditText
-    //  IMAGE
-    private lateinit var imgAvatar: ImageView
-    private lateinit var imgEmail: ImageView
-    private lateinit var imgPhone: ImageView
-    private lateinit var imgAddress: ImageView
-    private lateinit var imgWeb: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setupView()
         setContentView(R.layout.profile_activity)
-        onStart()
-        // TODO
+        goIntents()
     }
 
-    override fun onStart() {
-        super.onStart()
-        mnuSave.setOnClickListener(checkFields())
+
+    private fun checkFields(): Boolean {
+        var check = true
+        if (txtName.text.toString().isBlank()) {
+            txtName.error = getString(R.string.profile_invalid_name)
+            check = false
+        }
+        if (txtAddress.text.toString().isBlank()) {
+            txtAddress.error = getString(R.string.profile_invalid_address)
+            check = false
+        }
+        if (txtEmail.text.toString().isBlank() || !txtEmail.text.toString().isValidEmail()) {
+            txtEmail.error = getString(R.string.profile_invalid_email)
+            check = false
+        }
+        if (txtPhonenumber.text.toString().isBlank() || !txtPhonenumber.text.toString().isValidPhone()) {
+            txtPhonenumber.error = getString(R.string.profile_invalid_phonenumber)
+            check = false
+        }
+        if (txtWeb.text.toString().isBlank() || !txtWeb.text.toString().isValidUrl()) {
+            txtWeb.error = getString(R.string.profile_invalid_web)
+            check = false
+        }
+        return check
     }
 
-    private fun checkFields(): View.OnClickListener? {
-        if(!isValidName() && txtEmail.text.toString().isValidEmail() && txtPhone.text.toString().isValidPhone() && txtWeb.text.toString().isValidUrl()){
-            Toast.makeText(this,"User save successfully", DURATION_TOAST).show()
+
+    private fun goIntents() {
+        val intent = Intent(this,AvatarActivity::class.java)
+
+        imgEmail.setOnClickListener{checkImgEmail()}
+        imgPhonenumber.setOnClickListener {checkImgPhoneNumber()}
+        imgWeb.setOnClickListener {checkImgWeb()}
+        imgAddress.setOnClickListener {checkImgAddress()}
+
+        imgAvatar.setOnClickListener{startActivity(intent)}
+        lblName.setOnClickListener{startActivity(intent)}
+    }
+
+    private fun checkImgWeb() {
+        if (txtWeb.text.toString().isBlank()) {
+            toast("Invalid web")
+        } else {
+            imgWeb.setOnClickListener { startActivity(newViewUriIntent(Uri.parse(txtWeb.text.toString()))) }
         }
     }
 
-    private fun isValidName(): Boolean = txtName.text.toString().isBlank()
-
-    private fun setupView() {
-        //Boton saves menu:
-        mnuSave = findViewById(R.id.mnuSave)
-        //Capturar TXT
-        txtName = findViewById(R.id.txtName)
-        txtEmail = findViewById(R.id.txtEmail)
-        txtPhone = findViewById(R.id.txtPhoneNumber)
-        txtAddress = findViewById(R.id.txtAddress)
-        txtWeb = findViewById(R.id.txtWeb)
-        //Capturar Imagenes
-        imgAvatar = findViewById(R.id.imgAvatar)
-        imgEmail = findViewById(R.id.imgEmail)
-        imgPhone = findViewById(R.id.imgPhoneNumber)
-        imgAddress = findViewById(R.id.imgAddress)
-        imgWeb = findViewById(R.id.imgWeb)
+    private fun checkImgAddress() {
+        if (txtAddress.text.toString().isBlank()) {
+            toast("Invalid Address")
+        } else {
+            imgAddress.setOnClickListener { startActivity(newSearchInMapIntent(txtAddress.text.toString())) }
+        }
     }
 
+    private fun checkImgPhoneNumber() {
+        if (txtPhoneNumber.text.toString().isBlank() ) {
+            toast("Invalid Phone Number")
+        } else {
+            imgPhonenumber.setOnClickListener { startActivity(newDialIntent(txtPhoneNumber.text.toString())) }
+        }
+    }
+
+    private fun checkImgEmail() {
+        if (txtEmail.text.toString().isBlank()) {
+            toast("Invalid Email")
+        } else {
+            imgEmail.setOnClickListener { startActivity(newEmailIntent(txtEmail.text.toString())) }
+        }
+    }
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -92,8 +108,16 @@ class ProfileActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        //Falta por hacer
+    }
+
     private fun save() {
-        // TODO
+        if(checkFields()){
+            toast(getString(R.string.validateCorrect))
+        }
+
     }
 
 }

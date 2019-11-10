@@ -13,8 +13,8 @@
     <string name="hintPhone">(phone)</string>
     <string name="hintAddress">(address)</string>
     <string name="hintWeb">(url)</string>
-    <string name="avatar_select" />
-    <string name="profile_save" />
+    <string name="avatar_select">Profile Save </string>
+    <string name="profile_save">Menu Save </string>
     <string name="lblPhoneNumber">Phone Number (*)</string>
     <string name="lblEmail">email (*)</string>
     <string name="descriptionPikachu">Pikachu</string>
@@ -40,4 +40,11 @@
     <string name="descriptionEmail">Email</string>
     <string name="descriptionAddress">Address</string>
     <string name="descriptionWeb">Web</string>
+    <string name="profile_invalid_name">Invalid Name</string>
+    <string name="profile_invalid_address">Invalid Adress</string>
+    <string name="profile_invalid_email">Invalid Email</string>
+    <string name="profile_invalid_phonenumber">Invalid Phone Number</string>
+    <string name="profile_invalid_web">Invalid Web</string>
+    <string name="validateCorrect">User save successfully</string>
+    <string name="defaultText" />
 </resources>

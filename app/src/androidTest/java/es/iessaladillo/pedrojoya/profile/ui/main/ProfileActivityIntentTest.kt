@@ -36,7 +36,7 @@ class ProfileActivityIntentTest {
 
     @Before
     fun setup() {
-        onView(withId(R.id.txtEmail)).perform(closeSoftKeyboard())
+        onView(withId(R.id.txtName)).perform(closeSoftKeyboard())
     }
 
     // Implicit intents

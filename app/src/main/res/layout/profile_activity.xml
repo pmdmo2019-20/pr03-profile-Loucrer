@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,20 +19,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/pikachu" />
 
-    <TextView
-        android:id="@+id/lblName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:background="@color/avatar_label_background"
-        android:padding="@string/paddingName"
-        android:text="@string/defaultTextlblName"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/lblRequiredName"
@@ -47,6 +35,7 @@
         android:ems="10"
         android:hint="@string/hintName"
         android:inputType="textPersonName"
+        android:text="@string/defaultText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblRequiredName" />
@@ -59,13 +48,13 @@
         app:layout_constraintGuide_percent="0.9" />
 
     <ImageView
-        android:id="@+id/imgPhoneNumber"
+        android:id="@+id/imgPhonenumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/descriptionPhone"
-        app:layout_constraintBottom_toBottomOf="@+id/txtPhoneNumber"
+        app:layout_constraintBottom_toBottomOf="@+id/txtPhonenumber"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/txtPhoneNumber"
+        app:layout_constraintTop_toTopOf="@+id/txtPhonenumber"
         app:srcCompat="@drawable/ic_call_24dp" />
 
     <TextView
@@ -83,6 +72,7 @@
         android:ems="10"
         android:hint="@string/hintEmail"
         android:inputType="textEmailAddress"
+        android:text="@string/defaultText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblRequiredEmail" />
 
@@ -94,19 +84,22 @@
         android:contentDescription="@string/descriptionEmail"
         app:layout_constraintBottom_toBottomOf="@+id/txtEmail"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/lblRequiredEmail"
+        app:layout_constraintTop_toTopOf="@+id/txtEmail"
         app:srcCompat="@drawable/ic_email_24dp" />
 
     <EditText
-        android:id="@+id/txtPhoneNumber"
-        android:layout_width="126dp"
+        android:id="@+id/txtPhonenumber"
+        android:layout_width="0dp"
         android:layout_height="45dp"
+        android:layout_marginEnd="40dp"
         android:ems="10"
         android:hint="@string/hintPhone"
         android:inputType="phone"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txtEmail"
-        app:layout_constraintEnd_toStartOf="@+id/imgPhoneNumber"
-        app:layout_constraintStart_toEndOf="@+id/imgEmail" />
+        android:text="@string/defaultText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imgEmail"
+        app:layout_constraintTop_toBottomOf="@+id/lblRequiredEmail" />
 
     <TextView
         android:id="@+id/lblRequiredPhone"
@@ -114,9 +107,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="56dp"
         android:text="@string/lblPhoneNumber"
-        app:layout_constraintBottom_toTopOf="@+id/txtPhoneNumber"
+        app:layout_constraintBottom_toTopOf="@+id/txtPhonenumber"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/txtPhoneNumber"
+        app:layout_constraintStart_toStartOf="@+id/txtPhonenumber"
         app:layout_constraintTop_toTopOf="@+id/lblRequiredEmail"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -135,6 +128,7 @@
         android:ems="10"
         android:hint="@string/hintAddress"
         android:inputType="textPersonName"
+        android:text="@string/defaultText"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblRequiredAddress" />
@@ -154,6 +148,7 @@
         android:ems="10"
         android:hint="@string/hintWeb"
         android:inputType="textPersonName"
+        android:text="@string/defaultText"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblRequiredWeb" />
@@ -189,4 +184,18 @@
         app:layout_constraintStart_toEndOf="@+id/txtWeb"
         app:layout_constraintTop_toTopOf="@+id/txtWeb"
         app:srcCompat="@drawable/ic_web_24dp" />
+
+    <TextView
+        android:id="@+id/lblName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="228dp"
+        android:background="@color/avatar_label_background"
+        android:padding="@dimen/margin"
+        android:text="@string/defaultTextlblName"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
